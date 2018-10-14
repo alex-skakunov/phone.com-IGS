@@ -80,6 +80,31 @@ ALTER TABLE `logs`
 --
 ALTER TABLE `logs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+
+
+CREATE TABLE `settings` (
+  `name` varchar(100) NOT NULL,
+  `value` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`name`, `value`) VALUES
+('password', '1');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`name`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

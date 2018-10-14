@@ -8,6 +8,9 @@ if(empty($_REQUEST['page'])) {
 
 $_REQUEST['page'] = strtolower(trim($_REQUEST['page']));
 
+if ($_REQUEST['page'] != 'login' && empty($_SESSION['authenticated'])) {
+    header('Location: index.php?page=login');
+}
 
 define('CURRENT_ACTION', $_REQUEST['page']);
 
