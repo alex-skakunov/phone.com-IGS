@@ -110,24 +110,26 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <? if(!empty($_SESSION['authenticated'])) : ?>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
+            <?
+              $itemsList = array('upload', 'search', 'settings');
+              foreach ($itemsList as $item) {
+                echo '<li class="nav-item ', (CURRENT_ACTION == $item ? 'active' : ''), '">';
+                echo '<a class="nav-link" href="index.php?page=' . $item . '">' . ucfirst($item) . '</a>';
+                echo '</li>'; 
+              }
+            ?>
+          </ul>
+        </div>
 
-          <?
-            $itemsList = array('upload', 'search');
-            foreach ($itemsList as $item) {
-              echo '<li class="nav-item ', (CURRENT_ACTION == $item ? 'active' : ''), '">';
-              echo '<a class="nav-link" href="index.php?page=' . $item . '">' . ucfirst($item) . '</a>';
-              echo '</li>'; 
-            }
-          ?>
-        </ul>
-      </div>
+        <div style="float: right;" class="navbar-nav">
+          <a class="nav-link" href="index.php?page=logout"><small>Logout</small></a>
+        </div>
+      <? endif; ?>
 
-      <div style="float: right;" class="nav-item">
-        <a  style="text-decoration: none; color: gray;" class="nav-link" href="index.php?page=statistics"><small>Statistics</small></a>
-      </div>
     </nav>
 
     <main role="main">
